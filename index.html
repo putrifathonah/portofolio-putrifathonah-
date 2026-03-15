@@ -1,492 +1,896 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Putri Fathonah | Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Tailwind Configuration for Custom Colors & Dark Mode
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            light: '#FDF2F8', // Pink soft
-                            DEFAULT: '#DB2777', // Rose/Pink
-                            dark: '#9D174D'
-                        },
-                        accent: {
-                            light: '#F3E8FF', // Purple soft
-                            DEFAULT: '#7C3AED', // Purple
-                        },
-                        soft: {
-                            blue: '#EFF6FF',
-                            gray: '#F9FAFB'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
-                    },
-                }
-            }
-        }
+      // Tailwind Configuration for Custom Colors & Dark Mode
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                light: "#FDF2F8", // Pink soft
+                DEFAULT: "#DB2777", // Rose/Pink
+                dark: "#9D174D",
+              },
+              accent: {
+                light: "#F3E8FF", // Purple soft
+                DEFAULT: "#7C3AED", // Purple
+              },
+              soft: {
+                blue: "#EFF6FF",
+                gray: "#F9FAFB",
+              },
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+              serif: ['"Playfair Display"', "serif"],
+            },
+          },
+        },
+      };
     </script>
 
     <style>
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        .dark .glass-nav {
-            background: rgba(15, 23, 42, 0.8);
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at top right, rgba(219, 39, 119, 0.1), transparent),
-                        radial-gradient(circle at bottom left, rgba(124, 58, 237, 0.1), transparent);
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .dark .glass-nav {
+        background: rgba(15, 23, 42, 0.8);
+      }
+      .hero-gradient {
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(219, 39, 119, 0.1),
+            transparent
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(124, 58, 237, 0.1),
+            transparent
+          );
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+      }
     </style>
-</head>
-<body class="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300 font-sans">
-
+  </head>
+  <body
+    class="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300 font-sans"
+  >
     <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200 dark:border-slate-800 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-serif">PF.</span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider">Home</a>
-                    <a href="#about" class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider">About</a>
-                    <a href="#education" class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider">Education</a>
-                    <a href="#organization" class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider">Org</a>
-                    <a href="#experience" class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider">Exp</a>
-                    <a href="#projects" class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider">Projects</a>
-                    <button id="theme-toggle" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                        <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
-                        <i data-lucide="moon" class="block dark:hidden w-5 h-5"></i>
-                    </button>
-                </div>
+    <nav
+      class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200 dark:border-slate-800 transition-all"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex-shrink-0 flex items-center">
+            <span
+              class="text-2xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-serif"
+              >PF.</span
+            >
+          </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center gap-4">
-                    <button id="theme-toggle-mobile" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600">
-                        <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
-                        <i data-lucide="moon" class="block dark:hidden w-5 h-5"></i>
-                    </button>
-                    <button id="mobile-menu-button" class="text-slate-600 dark:text-slate-300">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider"
+              >About</a
+            >
+            <a
+              href="#education"
+              class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider"
+              >Education</a
+            >
+            <a
+              href="#organization"
+              class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider"
+              >Org</a
+            >
+            <a
+              href="#experience"
+              class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider"
+              >Exp</a
+            >
+            <a
+              href="#projects"
+              class="hover:text-primary transition-colors font-medium text-sm uppercase tracking-wider"
+              >Projects</a
+            >
+            <button
+              id="theme-toggle"
+              class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+            >
+              <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
+              <i data-lucide="moon" class="block dark:hidden w-5 h-5"></i>
+            </button>
+          </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pb-6 px-4 space-y-4">
-            <a href="#home" class="block py-2 text-base font-medium">Home</a>
-            <a href="#about" class="block py-2 text-base font-medium">About</a>
-            <a href="#education" class="block py-2 text-base font-medium">Education</a>
-            <a href="#organization" class="block py-2 text-base font-medium">Organization</a>
-            <a href="#experience" class="block py-2 text-base font-medium">Experience</a>
-            <a href="#projects" class="block py-2 text-base font-medium">Projects</a>
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center gap-4">
+            <button
+              id="theme-toggle-mobile"
+              class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600"
+            >
+              <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
+              <i data-lucide="moon" class="block dark:hidden w-5 h-5"></i>
+            </button>
+            <button
+              id="mobile-menu-button"
+              class="text-slate-600 dark:text-slate-300"
+            >
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
         </div>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pb-6 px-4 space-y-4"
+      >
+        <a href="#home" class="block py-2 text-base font-medium">Home</a>
+        <a href="#about" class="block py-2 text-base font-medium">About</a>
+        <a href="#education" class="block py-2 text-base font-medium"
+          >Education</a
+        >
+        <a href="#organization" class="block py-2 text-base font-medium"
+          >Organization</a
+        >
+        <a href="#experience" class="block py-2 text-base font-medium"
+          >Experience</a
+        >
+        <a href="#projects" class="block py-2 text-base font-medium"
+          >Projects</a
+        >
+      </div>
     </nav>
 
     <!-- SECTION 1: HOME (HERO) -->
-    <section id="home" class="min-h-screen pt-20 flex items-center hero-gradient overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <h2 class="text-primary font-bold tracking-widest uppercase mb-4 text-sm">Portfolio</h2>
-                    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-                        Putri <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Fathonah</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl font-medium text-slate-600 dark:text-slate-400 mb-8 italic">
-                        Mahasiswi Sistem Informasi | Tech Enthusiast | AI Learner
-                    </p>
-                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-lg">
-                        Saya adalah mahasiswi Sistem Informasi yang memiliki minat besar pada bidang teknologi, pengembangan sistem, dan artificial intelligence. Saya senang mengeksplorasi ide, membangun solusi digital, serta terus mengembangkan diri melalui pengalaman organisasi, proyek, dan kolaborasi.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#projects" class="px-8 py-4 bg-primary text-white rounded-full font-bold shadow-lg shadow-primary/30 hover:bg-primary-dark transition-all transform hover:-translate-y-1">Lihat Proyek</a>
-                        <a href="#contact" class="px-8 py-4 border-2 border-slate-200 dark:border-slate-700 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all transform hover:-translate-y-1">Hubungi Saya</a>
-                    </div>
-                </div>
-                <div class="relative" data-aos="fade-left">
-                    <div class="absolute -z-10 w-full h-full bg-accent/20 rounded-full blur-3xl opacity-50"></div>
-                    <!-- FOTO UTAMA: Menggunakan file yang dikirim (images/cover-home) -->
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white dark:border-slate-900 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                        <img src="images/cover-home.png" alt="Putri Fathonah" onerror="this.src='https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800'" class="w-full h-auto object-cover">
-                    </div>
-                </div>
+    <section
+      id="home"
+      class="min-h-screen pt-20 flex items-center hero-gradient overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <h2
+              class="text-primary font-bold tracking-widest uppercase mb-4 text-sm"
+            >
+              Portfolio
+            </h2>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+              Putri
+              <span
+                class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+                >Fathonah</span
+              >
+            </h1>
+            <p
+              class="text-xl md:text-2xl font-medium text-slate-600 dark:text-slate-400 mb-8 italic"
+            >
+              Mahasiswi Sistem Informasi | Tech Enthusiast | AI Learner
+            </p>
+            <p
+              class="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-lg"
+            >
+              Saya adalah mahasiswi Sistem Informasi yang memiliki minat besar
+              pada bidang teknologi, pengembangan sistem, dan artificial
+              intelligence. Saya senang mengeksplorasi ide, membangun solusi
+              digital, serta terus mengembangkan diri melalui pengalaman
+              organisasi, proyek, dan kolaborasi.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                class="px-8 py-4 bg-primary text-white rounded-full font-bold shadow-lg shadow-primary/30 hover:bg-primary-dark transition-all transform hover:-translate-y-1"
+                >Lihat Proyek</a
+              >
+              <a
+                href="#contact"
+                class="px-8 py-4 border-2 border-slate-200 dark:border-slate-700 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all transform hover:-translate-y-1"
+                >Hubungi Saya</a
+              >
             </div>
+          </div>
+          <div class="relative" data-aos="fade-left">
+            <div
+              class="absolute -z-10 w-full h-full bg-accent/20 rounded-full blur-3xl opacity-50"
+            ></div>
+            <!-- FOTO UTAMA: Menggunakan file yang dikirim (images/cover-home) -->
+            <div
+              class="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white dark:border-slate-900 transform rotate-3 hover:rotate-0 transition-transform duration-500"
+            >
+              <img
+                src="images/cover-home.png"
+                alt="Putri Fathonah"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800'
+                "
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- SECTION 2: ABOUT ME -->
     <section id="about" class="py-24 bg-white dark:bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div data-aos="fade-up">
-                    <h3 class="text-3xl md:text-4xl font-bold mb-8 relative inline-block">
-                        About Me
-                        <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
-                    </h3>
-                    <p class="text-lg leading-loose text-slate-600 dark:text-slate-400">
-                        Halo! Saya <span class="text-primary font-bold">Putri Fathonah</span>, mahasiswi Sistem Informasi di Universitas Multi Data Palembang angkatan 2023 yang memiliki minat besar pada bidang teknologi dan artificial intelligence. 
-                        <br><br>
-                        Saya bercita-cita menjadi seorang <span class="italic font-semibold underline decoration-accent">Software Architect</span> dan senang menggabungkan bisnis, teknologi, dan AI dalam berbagai proyek yang saya kerjakan. Bagi saya, teknologi bukan hanya tentang inovasi, tetapi juga tentang menciptakan solusi yang bermanfaat, relevan, dan berdampak positif bagi masyarakat.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4" data-aos="zoom-in">
-                    <!-- FOTO ABOUT 1 -->
-                    <div class="space-y-4">
-                        <img src="images/about-1.jpg" alt="About Putri 1" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400'" class="rounded-2xl shadow-lg w-full h-64 object-cover transform translate-y-8">
-                    </div>
-                    <!-- FOTO ABOUT 2 -->
-                    <div class="space-y-4">
-                        <img src="images/about-2.jpg" alt="About Putri 2" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400'" class="rounded-2xl shadow-lg w-full h-64 object-cover">
-                    </div>
-                </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div data-aos="fade-up">
+            <h3
+              class="text-3xl md:text-4xl font-bold mb-8 relative inline-block"
+            >
+              About Me
+              <span
+                class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"
+              ></span>
+            </h3>
+            <p class="text-lg leading-loose text-slate-600 dark:text-slate-400">
+              Halo! Saya
+              <span class="text-primary font-bold">Putri Fathonah</span>,
+              mahasiswi Sistem Informasi di Universitas Multi Data Palembang
+              angkatan 2023 yang memiliki minat besar pada bidang teknologi dan
+              artificial intelligence. <br /><br />
+              Saya bercita-cita menjadi seorang
+              <span class="italic font-semibold underline decoration-accent"
+                >Software Architect</span
+              >
+              dan senang menggabungkan bisnis, teknologi, dan AI dalam berbagai
+              proyek yang saya kerjakan. Bagi saya, teknologi bukan hanya
+              tentang inovasi, tetapi juga tentang menciptakan solusi yang
+              bermanfaat, relevan, dan berdampak positif bagi masyarakat.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4" data-aos="zoom-in">
+            <!-- FOTO ABOUT 1 -->
+            <div class="space-y-4">
+              <img
+                src="images/about-1.jpg"
+                alt="About Putri 1"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400'
+                "
+                class="rounded-2xl shadow-lg w-full h-64 object-cover transform translate-y-8"
+              />
             </div>
+            <!-- FOTO ABOUT 2 -->
+            <div class="space-y-4">
+              <img
+                src="images/about-2.jpg"
+                alt="About Putri 2"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400'
+                "
+                class="rounded-2xl shadow-lg w-full h-64 object-cover"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- SECTION 3: EDUCATION -->
     <section id="education" class="py-24 bg-soft-gray dark:bg-slate-900/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4">Education</h3>
-                <p class="text-slate-500">Latar belakang akademik saya</p>
-            </div>
-            <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 relative overflow-hidden group hover:border-primary/30 transition-colors">
-                    <div class="absolute top-0 right-0 p-8 text-primary/10 group-hover:text-primary/20 transition-colors">
-                        <i data-lucide="graduation-cap" class="w-32 h-32"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <span class="px-4 py-1 bg-primary-light text-primary dark:bg-primary/20 rounded-full text-sm font-bold mb-4 inline-block">2023 – Sekarang</span>
-                        <h4 class="text-2xl font-bold mb-2">Universitas Multi Data Palembang</h4>
-                        <p class="text-lg text-accent font-semibold mb-6">S1 Sistem Informasi</p>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Selama menempuh pendidikan, saya mempelajari berbagai bidang seperti analisis sistem, pengembangan perangkat lunak, basis data, manajemen proyek teknologi informasi, serta penerapan teknologi untuk mendukung kebutuhan bisnis dan masyarakat.
-                        </p>
-                        <div class="mt-8 flex items-center gap-2">
-                            <span class="text-sm font-bold text-slate-400">Target IPK:</span>
-                            <span class="text-xl font-bold text-primary">3.xx+</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h3 class="text-3xl md:text-4xl font-bold mb-4">Education</h3>
+          <p class="text-slate-500">Latar belakang akademik saya</p>
         </div>
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+          <div
+            class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 relative overflow-hidden group hover:border-primary/30 transition-colors"
+          >
+            <div
+              class="absolute top-0 right-0 p-8 text-primary/10 group-hover:text-primary/20 transition-colors"
+            >
+              <i data-lucide="graduation-cap" class="w-32 h-32"></i>
+            </div>
+            <div class="relative z-10">
+              <span
+                class="px-4 py-1 bg-primary-light text-primary dark:bg-primary/20 rounded-full text-sm font-bold mb-4 inline-block"
+                >2023 – Sekarang</span
+              >
+              <h4 class="text-2xl font-bold mb-2">
+                Universitas Multi Data Palembang
+              </h4>
+              <p class="text-lg text-accent font-semibold mb-6">
+                S1 Sistem Informasi
+              </p>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                Selama menempuh pendidikan, saya mempelajari berbagai bidang
+                seperti analisis sistem, pengembangan perangkat lunak, basis
+                data, manajemen proyek teknologi informasi, serta penerapan
+                teknologi untuk mendukung kebutuhan bisnis dan masyarakat.
+              </p>
+              <div class="mt-8 flex items-center gap-2">
+                <span class="text-sm font-bold text-slate-400"
+                  >Target IPK:</span
+                >
+                <span class="text-xl font-bold text-primary">3.xx+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION 4: ORGANIZATION -->
     <section id="organization" class="py-24 bg-white dark:bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4">Organization</h3>
-                <p class="text-slate-500">Keterlibatan aktif saya dalam lingkungan kampus</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Org 1 -->
-                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-transparent hover:border-accent transition-all card-hover" data-aos="fade-right">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
-                            <i data-lucide="users" class="w-7 h-7"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xl">Sekretaris Umum</h4>
-                            <p class="text-slate-500">Himpunan Mahasiswa Sistem Informasi</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6 italic">Periode: 2025 – 2026</p>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Bertanggung jawab dalam mengelola administrasi organisasi, termasuk surat masuk dan surat keluar dengan total lebih dari 150 dokumen. Selain itu, saya juga menyusun notulen rapat, mendokumentasikan arsip organisasi, membantu koordinasi antar divisi, serta memastikan alur komunikasi internal berjalan dengan tertib, efektif, dan terstruktur.
-                    </p>
-                </div>
-                <!-- Org 2 -->
-                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-transparent hover:border-primary transition-all card-hover" data-aos="fade-left">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
-                            <i data-lucide="palette" class="w-7 h-7"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xl">Kepala Departemen Seni dan Ormawa</h4>
-                            <p class="text-slate-500">Senat Mahasiswa</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6 italic">Periode: 2025 – 2026</p>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Berperan dalam mendukung perkembangan unit kegiatan mahasiswa dan menjadi penghubung antara organisasi mahasiswa dengan pihak terkait. Saya terlibat dalam koordinasi program kerja, pengembangan kegiatan seni dan organisasi kemahasiswaan, serta mendorong kolaborasi agar kegiatan mahasiswa berjalan lebih aktif, kreatif, dan terarah.
-                    </p>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h3 class="text-3xl md:text-4xl font-bold mb-4">Organization</h3>
+          <p class="text-slate-500">
+            Keterlibatan aktif saya dalam lingkungan kampus
+          </p>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Org 1 -->
+          <div
+            class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-transparent hover:border-accent transition-all card-hover"
+            data-aos="fade-right"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent"
+              >
+                <i data-lucide="users" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-xl">Sekretaris Umum</h4>
+                <p class="text-slate-500">
+                  Himpunan Mahasiswa Sistem Informasi
+                </p>
+              </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 italic">
+              Periode: 2025 – 2026
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Bertanggung jawab dalam mengelola administrasi organisasi,
+              termasuk surat masuk dan surat keluar dengan total lebih dari 150
+              dokumen. Selain itu, saya juga menyusun notulen rapat,
+              mendokumentasikan arsip organisasi, membantu koordinasi antar
+              divisi, serta memastikan alur komunikasi internal berjalan dengan
+              tertib, efektif, dan terstruktur.
+            </p>
+          </div>
+          <!-- Org 2 -->
+          <div
+            class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-transparent hover:border-primary transition-all card-hover"
+            data-aos="fade-left"
+          >
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary"
+              >
+                <i data-lucide="palette" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-xl">
+                  Kepala Departemen Seni dan Ormawa
+                </h4>
+                <p class="text-slate-500">Senat Mahasiswa</p>
+              </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 italic">
+              Periode: 2025 – 2026
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Berperan dalam mendukung perkembangan unit kegiatan mahasiswa dan
+              menjadi penghubung antara organisasi mahasiswa dengan pihak
+              terkait. Saya terlibat dalam koordinasi program kerja,
+              pengembangan kegiatan seni dan organisasi kemahasiswaan, serta
+              mendorong kolaborasi agar kegiatan mahasiswa berjalan lebih aktif,
+              kreatif, dan terarah.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION 5: EXPERIENCE -->
-    <section id="experience" class="py-24 bg-soft-blue dark:bg-slate-900/30 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h3>
-                <p class="text-slate-500">Pengalaman kerja dan kepanitiaan</p>
-            </div>
-            
-            <div class="space-y-24">
-                <!-- Exp 1 -->
-                <div class="flex flex-col md:flex-row gap-12 items-center" data-aos="fade-right">
-                    <div class="w-full md:w-1/2">
-                        <img src="images/experience-1.jpg" alt="MC PKKMB" onerror="this.src='https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=800'" class="rounded-3xl shadow-xl w-full h-80 object-cover">
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <h4 class="text-2xl font-bold mb-4">Master of Ceremony — PKKMB 2025</h4>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Menjadi pembawa acara dalam kegiatan PKKMB 2025 dengan membawakan rangkaian acara secara komunikatif, interaktif, dan terstruktur. Pengalaman ini membantu saya meningkatkan kemampuan public speaking, kepercayaan diri, serta kemampuan membangun suasana yang positif di hadapan audiens.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Exp 2 -->
-                <div class="flex flex-col md:flex-row-reverse gap-12 items-center" data-aos="fade-left">
-                    <div class="w-full md:w-1/2">
-                        <img src="images/experience-2.jpg" alt="Mentor LKMM" onerror="this.src='https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800'" class="rounded-3xl shadow-xl w-full h-80 object-cover">
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <h4 class="text-2xl font-bold mb-4">Sekretaris Umum dan Mentor — LKMM UMDP 2025</h4>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Berperan sebagai sekretaris umum sekaligus mentor dalam kegiatan LKMM UMDP 2025. Saya bertanggung jawab dalam pengelolaan administrasi kegiatan, penyusunan dokumen, serta mendampingi peserta selama pelaksanaan program. Pengalaman ini memperkuat kemampuan saya dalam manajemen, komunikasi, kepemimpinan, dan pendampingan tim.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Exp 3 -->
-                <div class="flex flex-col md:flex-row gap-12 items-center" data-aos="fade-right">
-                    <div class="w-full md:w-1/2">
-                        <img src="images/experience-3.jpg" alt="Peserta LKMM Regional" onerror="this.src='https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=800'" class="rounded-3xl shadow-xl w-full h-80 object-cover">
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <h4 class="text-2xl font-bold mb-4">Peserta — LKMM Regional</h4>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Mengikuti kegiatan LKMM Regional sebagai bentuk pengembangan diri dalam bidang kepemimpinan, organisasi, dan kolaborasi. Dari kegiatan ini, saya memperoleh wawasan baru mengenai manajemen tim, pengambilan keputusan, serta pentingnya membangun relasi dan komunikasi yang efektif dalam lingkungan organisasi.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <section
+      id="experience"
+      class="py-24 bg-soft-blue dark:bg-slate-900/30 overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h3 class="text-3xl md:text-4xl font-bold mb-4">
+            Professional Experience
+          </h3>
+          <p class="text-slate-500">Pengalaman kerja dan kepanitiaan</p>
         </div>
+
+        <div class="space-y-24">
+          <!-- Exp 1 -->
+          <div
+            class="flex flex-col md:flex-row gap-12 items-center"
+            data-aos="fade-right"
+          >
+            <div class="w-full md:w-1/2">
+              <img
+                src="images/experience-1.jpg"
+                alt="MC PKKMB"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=800'
+                "
+                class="rounded-3xl shadow-xl w-full h-80 object-cover"
+              />
+            </div>
+            <div class="w-full md:w-1/2">
+              <h4 class="text-2xl font-bold mb-4">
+                Master of Ceremony — PKKMB 2025
+              </h4>
+              <p
+                class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+              >
+                Menjadi pembawa acara dalam kegiatan PKKMB 2025 dengan
+                membawakan rangkaian acara secara komunikatif, interaktif, dan
+                terstruktur. Pengalaman ini membantu saya meningkatkan kemampuan
+                public speaking, kepercayaan diri, serta kemampuan membangun
+                suasana yang positif di hadapan audiens.
+              </p>
+            </div>
+          </div>
+
+          <!-- Exp 2 -->
+          <div
+            class="flex flex-col md:flex-row-reverse gap-12 items-center"
+            data-aos="fade-left"
+          >
+            <div class="w-full md:w-1/2">
+              <img
+                src="images/experience-2.jpg"
+                alt="Mentor LKMM"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800'
+                "
+                class="rounded-3xl shadow-xl w-full h-80 object-cover"
+              />
+            </div>
+            <div class="w-full md:w-1/2">
+              <h4 class="text-2xl font-bold mb-4">
+                Sekretaris Umum dan Mentor — LKMM UMDP 2025
+              </h4>
+              <p
+                class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+              >
+                Berperan sebagai sekretaris umum sekaligus mentor dalam kegiatan
+                LKMM UMDP 2025. Saya bertanggung jawab dalam pengelolaan
+                administrasi kegiatan, penyusunan dokumen, serta mendampingi
+                peserta selama pelaksanaan program. Pengalaman ini memperkuat
+                kemampuan saya dalam manajemen, komunikasi, kepemimpinan, dan
+                pendampingan tim.
+              </p>
+            </div>
+          </div>
+
+          <!-- Exp 3 -->
+          <div
+            class="flex flex-col md:flex-row gap-12 items-center"
+            data-aos="fade-right"
+          >
+            <div class="w-full md:w-1/2">
+              <img
+                src="images/experience-3.jpg"
+                alt="Peserta LKMM Regional"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=800'
+                "
+                class="rounded-3xl shadow-xl w-full h-80 object-cover"
+              />
+            </div>
+            <div class="w-full md:w-1/2">
+              <h4 class="text-2xl font-bold mb-4">Peserta — LKMM Regional</h4>
+              <p
+                class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+              >
+                Mengikuti kegiatan LKMM Regional sebagai bentuk pengembangan
+                diri dalam bidang kepemimpinan, organisasi, dan kolaborasi. Dari
+                kegiatan ini, saya memperoleh wawasan baru mengenai manajemen
+                tim, pengambilan keputusan, serta pentingnya membangun relasi
+                dan komunikasi yang efektif dalam lingkungan organisasi.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION 6: PROJECTS -->
     <section id="projects" class="py-24 bg-white dark:bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4">Projects</h3>
-                <p class="text-slate-500">Karya dan hasil kerja digital saya</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Project 1 -->
-                <div class="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all" data-aos="zoom-in">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="images/project-1.jpg" alt="Instansi BUMN Project" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-300 text-xs font-bold rounded-full uppercase">Laravel</span>
-                            <span class="px-3 py-1 bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-300 text-xs font-bold rounded-full uppercase">PHP</span>
-                            <span class="px-3 py-1 bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300 text-xs font-bold rounded-full uppercase">MySQL</span>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-4">Pengembangan Aplikasi Website pada Instansi BUMN</h4>
-                        <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                            Dalam kegiatan magang di salah satu instansi BUMN, saya terlibat dalam pengembangan aplikasi berbasis website untuk mendukung kebutuhan sistem informasi. Pada proyek ini, saya berkontribusi dalam proses perancangan fitur, pengembangan antarmuka, serta implementasi sistem.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="images/project-2.jpg" alt="Kost Project" onerror="this.src='https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-pink-100 text-pink-600 dark:bg-pink-900/40 dark:text-pink-300 text-xs font-bold rounded-full uppercase">Web Management</span>
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-300 text-xs font-bold rounded-full uppercase">Database</span>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-4">Website Pengelolaan Penginapan Kost</h4>
-                        <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                            Saya mengembangkan website pengelolaan kost yang dirancang untuk mempermudah proses pendataan kamar, penghuni, serta pengelolaan informasi penginapan secara lebih terstruktur. Proyek ini dibuat untuk menghadirkan sistem yang fungsional, efisien, dan mudah digunakan.
-                        </p>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h3 class="text-3xl md:text-4xl font-bold mb-4">Projects</h3>
+          <p class="text-slate-500">Karya dan hasil kerja digital saya</p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Project 1 -->
+          <div
+            class="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all"
+            data-aos="zoom-in"
+          >
+            <div class="aspect-video overflow-hidden">
+              <img
+                src="images/project-1.jpg"
+                alt="Instansi BUMN Project"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'
+                "
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-8">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-300 text-xs font-bold rounded-full uppercase"
+                  >Laravel</span
+                >
+                <span
+                  class="px-3 py-1 bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-300 text-xs font-bold rounded-full uppercase"
+                  >PHP</span
+                >
+                <span
+                  class="px-3 py-1 bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300 text-xs font-bold rounded-full uppercase"
+                  >MySQL</span
+                >
+              </div>
+              <h4 class="text-2xl font-bold mb-4">
+                Pengembangan Aplikasi Website pada Instansi BUMN
+              </h4>
+              <p
+                class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed"
+              >
+                Dalam kegiatan magang di salah satu instansi BUMN, saya terlibat
+                dalam pengembangan aplikasi berbasis website untuk mendukung
+                kebutuhan sistem informasi. Pada proyek ini, saya berkontribusi
+                dalam proses perancangan fitur, pengembangan antarmuka, serta
+                implementasi sistem.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div class="aspect-video overflow-hidden">
+              <img
+                src="images/project-2.jpg"
+                alt="Kost Project"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800'
+                "
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-8">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-pink-100 text-pink-600 dark:bg-pink-900/40 dark:text-pink-300 text-xs font-bold rounded-full uppercase"
+                  >Web Management</span
+                >
+                <span
+                  class="px-3 py-1 bg-indigo-100 text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-300 text-xs font-bold rounded-full uppercase"
+                  >Database</span
+                >
+              </div>
+              <h4 class="text-2xl font-bold mb-4">
+                Website Pengelolaan Penginapan Kost
+              </h4>
+              <p
+                class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed"
+              >
+                Saya mengembangkan website pengelolaan kost yang dirancang untuk
+                mempermudah proses pendataan kamar, penghuni, serta pengelolaan
+                informasi penginapan secara lebih terstruktur. Proyek ini dibuat
+                untuk menghadirkan sistem yang fungsional, efisien, dan mudah
+                digunakan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION 7: SKILLS -->
     <section id="skills" class="py-24 bg-soft-gray dark:bg-slate-900/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4">Skills & Tools</h3>
-                <p class="text-slate-500">Keahlian teknis dan pendukung</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Soft Skills -->
-                <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl shadow-sm" data-aos="fade-up">
-                    <h4 class="text-xl font-bold mb-6 flex items-center gap-2 text-primary">
-                        <i data-lucide="brain"></i> Soft Skills
-                    </h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Public Speaking</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Communication</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Problem Solving</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Teamwork</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Leadership</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Time Management</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Adaptability</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors">Collaboration</span>
-                    </div>
-                </div>
-
-                <!-- Hard Skills -->
-                <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl shadow-sm" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-xl font-bold mb-6 flex items-center gap-2 text-accent">
-                        <i data-lucide="code-2"></i> Hard Skills
-                    </h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors">HTML/CSS</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors">JavaScript</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors">PHP/Laravel</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors">MySQL</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors">Web Dev</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors">Canva</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors">Figma</span>
-                    </div>
-                </div>
-
-                <!-- AI Tools -->
-                <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl shadow-sm" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-xl font-bold mb-6 flex items-center gap-2 text-blue-500">
-                        <i data-lucide="sparkles"></i> AI Tools
-                    </h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors">Gemini</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors">NotebookLM</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors">ChatGPT</span>
-                        <span class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors">Antigravity</span>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h3 class="text-3xl md:text-4xl font-bold mb-4">Skills & Tools</h3>
+          <p class="text-slate-500">Keahlian teknis dan pendukung</p>
         </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Soft Skills -->
+          <div
+            class="p-8 bg-white dark:bg-slate-900 rounded-3xl shadow-sm"
+            data-aos="fade-up"
+          >
+            <h4
+              class="text-xl font-bold mb-6 flex items-center gap-2 text-primary"
+            >
+              <i data-lucide="brain"></i> Soft Skills
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Public Speaking</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Communication</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Problem Solving</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Teamwork</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Leadership</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Time Management</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Adaptability</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-primary/10 transition-colors"
+                >Collaboration</span
+              >
+            </div>
+          </div>
+
+          <!-- Hard Skills -->
+          <div
+            class="p-8 bg-white dark:bg-slate-900 rounded-3xl shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h4
+              class="text-xl font-bold mb-6 flex items-center gap-2 text-accent"
+            >
+              <i data-lucide="code-2"></i> Hard Skills
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors"
+                >HTML/CSS</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors"
+                >JavaScript</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors"
+                >PHP/Laravel</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors"
+                >MySQL</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors"
+                >Web Dev</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors"
+                >Canva</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors"
+                >Figma</span
+              >
+            </div>
+          </div>
+
+          <!-- AI Tools -->
+          <div
+            class="p-8 bg-white dark:bg-slate-900 rounded-3xl shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h4
+              class="text-xl font-bold mb-6 flex items-center gap-2 text-blue-500"
+            >
+              <i data-lucide="sparkles"></i> AI Tools
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors"
+                >Gemini</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors"
+                >NotebookLM</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors"
+                >ChatGPT</span
+              >
+              <span
+                class="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium hover:bg-blue-500/10 transition-colors"
+                >Antigravity</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION 8: CONTACT -->
     <section id="contact" class="py-24 bg-white dark:bg-slate-950">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">Let's Connect</h3>
-            <p class="text-lg text-slate-600 dark:text-slate-400 mb-12" data-aos="fade-up">
-                Saya terbuka untuk peluang kolaborasi, pengembangan proyek, maupun diskusi seputar teknologi, organisasi, dan artificial intelligence.
-            </p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up">
-                <a href="#" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-primary-light dark:hover:bg-primary/20 transition-all group">
-                    <i data-lucide="github" class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-primary"></i>
-                    <span class="font-bold text-sm">GitHub</span>
-                </a>
-                <a href="#" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-accent/10 transition-all group">
-                    <i data-lucide="linkedin" class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-accent"></i>
-                    <span class="font-bold text-sm">LinkedIn</span>
-                </a>
-                <a href="mailto:putri@example.com" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-primary-light dark:hover:bg-primary/20 transition-all group">
-                    <i data-lucide="mail" class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-primary"></i>
-                    <span class="font-bold text-sm">Email</span>
-                </a>
-                <a href="#" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-accent/10 transition-all group">
-                    <i data-lucide="instagram" class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-accent"></i>
-                    <span class="font-bold text-sm">Instagram</span>
-                </a>
-            </div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h3 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">
+          Let's Connect
+        </h3>
+        <p
+          class="text-lg text-slate-600 dark:text-slate-400 mb-12"
+          data-aos="fade-up"
+        >
+          Saya terbuka untuk peluang kolaborasi, pengembangan proyek, maupun
+          diskusi seputar teknologi, organisasi, dan artificial intelligence.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up">
+          <a
+            href="#"
+            class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-primary-light dark:hover:bg-primary/20 transition-all group"
+          >
+            <i
+              data-lucide="github"
+              class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-primary"
+            ></i>
+            <span class="font-bold text-sm">GitHub</span>
+          </a>
+          <a
+            href="#"
+            class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-accent/10 transition-all group"
+          >
+            <i
+              data-lucide="linkedin"
+              class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-accent"
+            ></i>
+            <span class="font-bold text-sm">LinkedIn</span>
+          </a>
+          <a
+            href="mailto:putri@example.com"
+            class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-primary-light dark:hover:bg-primary/20 transition-all group"
+          >
+            <i
+              data-lucide="mail"
+              class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-primary"
+            ></i>
+            <span class="font-bold text-sm">Email</span>
+          </a>
+          <a
+            href="#"
+            class="p-6 bg-slate-50 dark:bg-slate-900 rounded-3xl hover:bg-accent/10 transition-all group"
+          >
+            <i
+              data-lucide="instagram"
+              class="w-8 h-8 mx-auto mb-3 text-slate-600 group-hover:text-accent"
+            ></i>
+            <span class="font-bold text-sm">Instagram</span>
+          </a>
         </div>
+      </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-12 border-t border-slate-200 dark:border-slate-800 text-center">
-        <p class="text-slate-500 text-sm">
-            © 2026 Putri Fathonah. All rights reserved.
-        </p>
+    <footer
+      class="py-12 border-t border-slate-200 dark:border-slate-800 text-center"
+    >
+      <p class="text-slate-500 text-sm">
+        © 2026 Putri Fathonah. All rights reserved.
+      </p>
     </footer>
 
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+      });
 
-        // Initialize Lucide Icons
-        lucide.createIcons();
+      // Initialize Lucide Icons
+      lucide.createIcons();
 
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+      // Mobile Menu Toggle
+      const menuBtn = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
 
-        // Dark Mode Toggle Logic
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-        
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        }
+      // Dark Mode Toggle Logic
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeToggleMobile = document.getElementById("theme-toggle-mobile");
 
-        themeToggle.addEventListener('click', toggleDarkMode);
-        themeToggleMobile.addEventListener('click', toggleDarkMode);
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      }
 
-        // Check local storage for theme
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        }
+      themeToggle.addEventListener("click", toggleDarkMode);
+      themeToggleMobile.addEventListener("click", toggleDarkMode);
 
-        // Smooth scroll adjustment for fixed header
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                mobileMenu.classList.add('hidden'); // Close mobile menu if open
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+      // Check local storage for theme
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+
+      // Smooth scroll adjustment for fixed header
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          mobileMenu.classList.add("hidden"); // Close mobile menu if open
+
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth",
             });
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>
