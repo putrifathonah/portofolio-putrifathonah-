@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Putri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          boxShadow: {
+            glow: '0 0 40px rgba(96,165,250,0.18)'
+          },
+          animation: {
+            floaty: 'floaty 6s ease-in-out infinite',
+            fadeUp: 'fadeUp 0.8s ease forwards',
+            marqueeSlow: 'marqueeSlow 18s linear infinite'
+          },
+          keyframes: {
+            floaty: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' }
+            },
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            marqueeSlow: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg-main: #f4f8fc;
+      --bg-secondary: #eaf1f8;
+      --header-bg: rgba(255, 255, 255, 0.76);
+      --border-color: rgba(15, 23, 42, 0.10);
+      --card-bg: rgba(255, 255, 255, 0.65);
+      --card-solid: rgba(255, 255, 255, 0.86);
+      --text-main: #0f172a;
+      --text-soft: rgba(15, 23, 42, 0.72);
+      --text-fade: rgba(15, 23, 42, 0.52);
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.10);
+      --hero-word: #cad7e5;
+      --hero-glow: rgba(37, 99, 235, 0.14);
+      --shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
+      --grid-line: rgba(15, 23, 42, 0.06);
+    }
+
+    html.dark {
+      --bg-main: #020817;
+      --bg-secondary: #030b16;
+      --header-bg: rgba(2, 8, 23, 0.72);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-solid: rgba(255, 255, 255, 0.03);
+      --text-main: #f8fafc;
+      --text-soft: rgba(255, 255, 255, 0.74);
+      --text-fade: rgba(255, 255, 255, 0.48);
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --hero-word: #b7c9db;
+      --hero-glow: rgba(96, 165, 250, 0.16);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      --grid-line: rgba(255, 255, 255, 0.05);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, var(--hero-glow), transparent 32%),
+        linear-gradient(to bottom, var(--bg-main), var(--bg-secondary) 45%, var(--bg-main) 100%);
+      color: var(--text-main);
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.12));
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.12));
+    }
+
+    .hero-word {
+      font-size: clamp(4.8rem, 18vw, 15rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+      color: var(--hero-word);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      line-height: 1;
+    }
+
+    .glass {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .surface {
+      background: var(--card-solid);
+      border: 1px solid var(--border-color);
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+
+    .muted {
+      color: var(--text-soft);
+    }
+
+    .faded {
+      color: var(--text-fade);
+    }
+
+    .accent-chip {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+
+    .sticky-note {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      border-radius: 6px;
+      opacity: 0.92;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.22);
+      animation: floaty 5s ease-in-out infinite;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .theme-btn-icon {
+      transition: transform 0.35s ease, opacity 0.25s ease;
+    }
+
+    html.dark .sun-icon {
+      opacity: 0;
+      transform: scale(0.6) rotate(-45deg);
+    }
+
+    html:not(.dark) .moon-icon {
+      opacity: 0;
+      transform: scale(0.6) rotate(45deg);
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-400/30">
+  <div class="fixed inset-0 -z-20 grid-bg"></div>
+  <div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_center,var(--hero-glow),transparent_35%)]"></div>
+
+  <header class="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl" style="background: var(--header-bg); border-color: var(--border-color);">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#home" class="text-lg font-semibold tracking-[0.25em]" style="color: var(--text-main);">PUTRI</a>
+
+      <nav class="hidden items-center gap-7 text-sm md:flex" style="color: var(--text-soft);">
+        <a href="#home" class="nav-link relative transition hover:opacity-100">Home</a>
+        <a href="#about" class="nav-link relative transition hover:opacity-100">About Me</a>
+        <a href="#education" class="nav-link relative transition hover:opacity-100">Education</a>
+        <a href="#experience" class="nav-link relative transition hover:opacity-100">Experience</a>
+        <a href="#project" class="nav-link relative transition hover:opacity-100">Project</a>
+        <a href="#skills" class="nav-link relative transition hover:opacity-100">Skills</a>
+        <a href="#contact" class="nav-link relative transition hover:opacity-100">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" class="relative inline-flex h-11 w-11 items-center justify-center rounded-full border transition hover:scale-105" style="border-color: var(--border-color); background: var(--card-bg); color: var(--text-main);" aria-label="Ganti tema">
+          <svg xmlns="http://www.w3.org/2000/svg" class="theme-btn-icon sun-icon absolute h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v2.25M12 18.75V21M4.97 4.97l1.59 1.59M17.44 17.44l1.59 1.59M3 12h2.25M18.75 12H21M4.97 19.03l1.59-1.59M17.44 6.56l1.59-1.59M15.75 12A3.75 3.75 0 1112 8.25 3.75 3.75 0 0115.75 12z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="theme-btn-icon moon-icon absolute h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12.79A9 9 0 1111.21 3c0 .18-.01.36-.01.54A9 9 0 0021 12.79z" />
+          </svg>
+        </button>
+
+        <button id="menuBtn" class="inline-flex h-11 w-11 items-center justify-center rounded-full border md:hidden" style="border-color: var(--border-color); background: var(--card-bg); color: var(--text-main);" aria-label="Buka menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t md:hidden" style="background: var(--header-bg); border-color: var(--border-color);">
+      <div class="mx-auto flex max-w-7xl flex-col px-4 py-4 text-sm" style="color: var(--text-soft);">
+        <a href="#home" class="rounded-xl px-3 py-3 hover:bg-white/5">Home</a>
+        <a href="#about" class="rounded-xl px-3 py-3 hover:bg-white/5">About Me</a>
+        <a href="#education" class="rounded-xl px-3 py-3 hover:bg-white/5">Education</a>
+        <a href="#experience" class="rounded-xl px-3 py-3 hover:bg-white/5">Experience</a>
+        <a href="#project" class="rounded-xl px-3 py-3 hover:bg-white/5">Project</a>
+        <a href="#skills" class="rounded-xl px-3 py-3 hover:bg-white/5">Skills</a>
+        <a href="#contact" class="rounded-xl px-3 py-3 hover:bg-white/5">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="relative overflow-hidden px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-6 flex items-center justify-between text-xs uppercase tracking-[0.35em] sm:text-sm" style="color: var(--text-soft);">
+          <p>Putri Fathonah</p>
+          <p>@puonaav</p>
+        </div>
+
+        <div class="relative min-h-[78vh] rounded-[2rem] px-5 py-8 shadow-glow sm:px-8 lg:px-10 lg:py-10 surface">
+          <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--hero-glow),transparent_22%)]"></div>
+
+            <div class="relative mt-10 flex flex-1 items-end justify-center lg:mt-0">
+              <div class="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl sm:h-[430px] sm:w-[430px]" style="background: var(--hero-glow);"></div>
+
+              <h2 class="hero-word absolute inset-x-0 top-[18%] text-center font-black uppercase opacity-90 sm:top-[16%]">
+                PORTFOLIO
+              </h2>
+
+              <div class="relative z-10 reveal flex w-full justify-center">
+                <div class="relative">
+                  <div class="sticky-note left-[-16px] top-[15%] rotate-[-12deg] bg-lime-200 hidden sm:block"></div>
+                  <div class="sticky-note right-[-18px] top-[8%] rotate-[18deg] bg-sky-400 hidden sm:block" style="animation-delay:0.8s"></div>
+                  <div class="sticky-note left-[8%] bottom-[18%] rotate-[10deg] bg-violet-200 hidden sm:block" style="animation-delay:1.5s"></div>
+                  <div class="sticky-note right-[0%] bottom-[22%] rotate-[-8deg] bg-pink-200 hidden sm:block" style="animation-delay:2.2s"></div>
+
+                  <img
+                    src="images/cover-image.png"
+                    alt="Foto Putri"
+                    class="relative z-10 mx-auto h-[420px] w-auto object-contain drop-shadow-[0_28px_65px_rgba(0,0,0,0.55)] sm:h-[520px] lg:h-[650px]"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 overflow-hidden rounded-2xl surface">
+          <div class="flex min-w-max animate-marqueeSlow gap-10 px-6 py-4 text-xs uppercase tracking-[0.35em] sm:text-sm faded">
+            <span>Responsive Design</span>
+            <span>Tailwind CSS</span>
+            <span>Smooth Animation</span>
+            <span>Light & Dark Mode</span>
+            <span>Modern Portfolio</span>
+            <span>Responsive Design</span>
+            <span>Tailwind CSS</span>
+            <span>Smooth Animation</span>
+            <span>Light & Dark Mode</span>
+            <span>Modern Portfolio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10 reveal">
+          <p class="text-sm uppercase tracking-[0.35em]" style="color: var(--accent);">About Me</p>
+          <h2 class="section-title mt-4 font-black uppercase" style="color: var(--text-main);">Tentang Saya</h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="glass reveal rounded-[2rem] p-7 sm:p-9">
+            <p class="text-lg leading-8 muted">
+              Halo! Saya Putri Fathonah, mahasiswi Sistem Informasi di Universitas Multi Data Palembang angkatan 2023 yang memiliki minat besar pada bidang teknologi dan artificial intelligence. Saya bercita-cita menjadi seorang Software Architect dan senang menggabungkan bisnis, teknologi, dan AI dalam berbagai project yang saya kerjakan untuk menciptakan solusi yang bermanfaat bagi masyarakat.
+
+Saya memiliki pengalaman sebagai Sekretaris Umum, Kepala Koordinasi di bidang seni dan organisasi mahasiswa kampus, serta mentor LKMM. Pengalaman tersebut membentuk saya menjadi pribadi yang komunikatif, bertanggung jawab, dan mampu bekerja sama dalam tim. Dalam proses pengembangan project, saya juga terbiasa menggunakan berbagai tools dan teknologi seperti Java, React, Figma, Angular, Vite, Git, dan Express.
+            </p>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div class="glass reveal rounded-[2rem] p-6">
+              <p class="text-sm uppercase tracking-[0.25em] faded">Profile</p>
+              <h3 class="mt-4 text-2xl font-bold" style="color: var(--text-main);">Creative & Adaptive</h3>
+              <p class="mt-3 text-sm leading-7 muted">Deskripsi singkat untuk personal value dan gaya kerja.</p>
+            </div>
+            <div class="glass reveal rounded-[2rem] p-6">
+              <p class="text-sm uppercase tracking-[0.25em] faded">Focus</p>
+              <h3 class="mt-4 text-2xl font-bold" style="color: var(--text-main);">UI / Design / Branding</h3>
+              <p class="mt-3 text-sm leading-7 muted">Bisa diganti dengan bidang yang sesuai dengan portofolio kamu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10 reveal">
+          <p class="text-sm uppercase tracking-[0.35em]" style="color: var(--accent);">Education</p>
+          <h2 class="section-title mt-4 font-black uppercase" style="color: var(--text-main);">Riwayat Pendidikan</h2>
+        </div>
+
+        <div class="space-y-6">
+          <div class="glass reveal rounded-[2rem] p-6 sm:p-8">
+            <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h3 class="text-2xl font-bold" style="color: var(--text-main);">Nama Sekolah / Universitas</h3>
+                <p class="mt-2 muted">Jurusan / Program Studi</p>
+              </div>
+              <span class="rounded-full px-4 py-2 text-sm surface muted">2021 - 2025</span>
+            </div>
+            <p class="mt-5 max-w-3xl text-sm leading-7 muted">Tambahkan keterangan pendidikan, pencapaian akademik, organisasi, atau fokus pembelajaran di sini.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10 reveal">
+          <p class="text-sm uppercase tracking-[0.35em]" style="color: var(--accent);">Experience</p>
+          <h2 class="section-title mt-4 font-black uppercase" style="color: var(--text-main);">Pengalaman</h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="glass reveal rounded-[2rem] p-6 sm:p-8">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-2xl font-bold" style="color: var(--text-main);">Posisi / Role</h3>
+              <span class="text-sm faded">2024</span>
+            </div>
+            <p class="mt-2 muted">Nama Instansi / Organisasi</p>
+            <p class="mt-5 text-sm leading-7 muted">Tuliskan tugas utama, kontribusi, dan hasil yang pernah dicapai.</p>
+          </div>
+          <div class="glass reveal rounded-[2rem] p-6 sm:p-8">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-2xl font-bold" style="color: var(--text-main);">Posisi / Role</h3>
+              <span class="text-sm faded">2023</span>
+            </div>
+            <p class="mt-2 muted">Nama Instansi / Organisasi</p>
+            <p class="mt-5 text-sm leading-7 muted">Section ini sudah dibuat dengan pola card agar rapi di desktop maupun mobile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10 reveal">
+          <p class="text-sm uppercase tracking-[0.35em]" style="color: var(--accent);">Project</p>
+          <h2 class="section-title mt-4 font-black uppercase" style="color: var(--text-main);">Project Pilihan</h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <article class="glass reveal rounded-[2rem] p-6">
+            <div class="mb-5 rounded-[1.5rem] p-10 text-center faded surface">Preview Project</div>
+            <h3 class="text-2xl font-bold" style="color: var(--text-main);">Project 01</h3>
+            <p class="mt-3 text-sm leading-7 muted">Deskripsi singkat project, tools yang digunakan, dan hasil utamanya.</p>
+          </article>
+          <article class="glass reveal rounded-[2rem] p-6">
+            <div class="mb-5 rounded-[1.5rem] p-10 text-center faded surface">Preview Project</div>
+            <h3 class="text-2xl font-bold" style="color: var(--text-main);">Project 02</h3>
+            <p class="mt-3 text-sm leading-7 muted">Kartu project dibuat siap untuk nanti diberi gambar, link demo, dan GitHub.</p>
+          </article>
+          <article class="glass reveal rounded-[2rem] p-6 md:col-span-2 xl:col-span-1">
+            <div class="mb-5 rounded-[1.5rem] p-10 text-center faded surface">Preview Project</div>
+            <h3 class="text-2xl font-bold" style="color: var(--text-main);">Project 03</h3>
+            <p class="mt-3 text-sm leading-7 muted">Nanti tinggal ganti isi konten tanpa perlu ubah struktur tampilan utama.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10 reveal">
+          <p class="text-sm uppercase tracking-[0.35em]" style="color: var(--accent);">Skills</p>
+          <h2 class="section-title mt-4 font-black uppercase" style="color: var(--text-main);">Keahlian</h2>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="glass reveal rounded-[2rem] p-6 text-center">
+            <h3 class="text-xl font-bold" style="color: var(--text-main);">HTML</h3>
+          </div>
+          <div class="glass reveal rounded-[2rem] p-6 text-center">
+            <h3 class="text-xl font-bold" style="color: var(--text-main);">CSS</h3>
+          </div>
+          <div class="glass reveal rounded-[2rem] p-6 text-center">
+            <h3 class="text-xl font-bold" style="color: var(--text-main);">Tailwind</h3>
+          </div>
+          <div class="glass reveal rounded-[2rem] p-6 text-center">
+            <h3 class="text-xl font-bold" style="color: var(--text-main);">JavaScript</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="glass reveal rounded-[2rem] p-7 sm:p-9">
+            <p class="text-sm uppercase tracking-[0.35em]" style="color: var(--accent);">Contact</p>
+            <h2 class="section-title mt-4 font-black uppercase" style="color: var(--text-main);">Mari Terhubung</h2>
+            <p class="mt-5 max-w-2xl text-sm leading-7 muted">
+              Bagian contact ini dibuat simpel dan modern. Nanti bisa diisi email, nomor telepon, Instagram, LinkedIn, atau form contact.
+            </p>
+          </div>
+
+          <div class="glass reveal rounded-[2rem] p-7 sm:p-9">
+            <div class="space-y-5 text-sm muted">
+              <div>
+                <p class="faded">Email</p>
+                <p class="mt-1 text-base" style="color: var(--text-main);">yourmail@example.com</p>
+              </div>
+              <div>
+                <p class="faded">Instagram</p>
+                <p class="mt-1 text-base" style="color: var(--text-main);">@username</p>
+              </div>
+              <div>
+                <p class="faded">Location</p>
+                <p class="mt-1 text-base" style="color: var(--text-main);">Indonesia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t px-4 py-8 sm:px-6 lg:px-8" style="border-color: var(--border-color);">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center text-sm sm:flex-row sm:text-left faded">
+      <p>© 2025 Putri Portfolio. All rights reserved.</p>
+      <p>Dibuat dengan HTML, CSS, Tailwind, dan animasi ringan.</p>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+      root.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        link.style.color = 'var(--text-soft)';
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+          link.style.color = 'var(--text-main)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
