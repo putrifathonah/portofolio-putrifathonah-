@@ -3,779 +3,404 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Putri Fathonah | Portfolio</title>
-  <meta name="description" content="Portfolio pribadi Putri Fathonah - Mahasiswi Sistem Informasi | Tech Enthusiast | AI Learner" />
+  <title>Portfolio | Putri Fathonah</title>
+  <meta name="description" content="Portfolio pribadi Putri Fathonah" />
 
-  <!-- Google Fonts: modern, clean, feminine, professional -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            display: ['Playfair Display', 'serif'],
-          },
           colors: {
-            brand: {
-              50: '#faf5ff',
-              100: '#f3e8ff',
-              200: '#e9d5ff',
-              300: '#d8b4fe',
-              400: '#c084fc',
-              500: '#a855f7',
-              600: '#9333ea',
-            },
-            roseSoft: '#fdf2f8',
-            pastelBlue: '#eef6ff',
-            pastelLilac: '#f6f0ff',
-            ink: '#0f172a',
+            primary: '#2563eb',
+            soft: '#eff6ff',
+            darkbg: '#0f172a'
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif']
           },
           boxShadow: {
-            soft: '0 10px 30px rgba(15, 23, 42, 0.08)',
-            glow: '0 20px 50px rgba(168, 85, 247, 0.16)',
-          },
-          keyframes: {
-            floatSoft: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-8px)' },
-            },
-            fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(28px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            }
-          },
-          animation: {
-            floatSoft: 'floatSoft 5s ease-in-out infinite',
-            fadeUp: 'fadeUp 1s ease forwards',
-            fadeIn: 'fadeIn 1.2s ease forwards',
+            soft: '0 10px 30px rgba(37, 99, 235, .08)'
           }
         }
       }
     }
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg-main: #fffafc;
-      --bg-soft: rgba(255,255,255,0.75);
-      --text-main: #1f2937;
-      --text-soft: #6b7280;
-      --line-soft: rgba(167, 139, 250, 0.18);
-      --hero-title: rgba(148, 163, 184, 0.24);
-      --blob-1: rgba(244, 114, 182, 0.18);
-      --blob-2: rgba(168, 85, 247, 0.16);
-      --blob-3: rgba(59, 130, 246, 0.12);
-    }
-
-    .dark {
-      --bg-main: #07111f;
-      --bg-soft: rgba(15, 23, 42, 0.62);
-      --text-main: #f8fafc;
-      --text-soft: #cbd5e1;
-      --line-soft: rgba(255,255,255,0.08);
-      --hero-title: rgba(226, 232, 240, 0.12);
-      --blob-1: rgba(244, 114, 182, 0.12);
-      --blob-2: rgba(168, 85, 247, 0.16);
-      --blob-3: rgba(59, 130, 246, 0.10);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 10% 10%, var(--blob-1), transparent 28%),
-        radial-gradient(circle at 90% 15%, var(--blob-2), transparent 30%),
-        radial-gradient(circle at 55% 85%, var(--blob-3), transparent 32%),
-        var(--bg-main);
-      color: var(--text-main);
-      overflow-x: hidden;
-    }
-
-    .glass {
-      background: var(--bg-soft);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--line-soft);
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      letter-spacing: 0.01em;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #ec4899, #a855f7);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
-    }
-
-    .hero-outline {
-      font-size: clamp(4rem, 16vw, 12rem);
-      line-height: 0.85;
-      letter-spacing: -0.06em;
-      color: var(--hero-title);
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #7c3aed, #ec4899 52%, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-photo-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 10% 12% auto 12%;
-      height: 62%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(168,85,247,0.14));
-      filter: blur(20px);
-      border-radius: 999px;
-      z-index: 0;
-    }
-
-    .timeline-line {
-      position: absolute;
-      left: 14px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, rgba(168,85,247,0.15), rgba(236,72,153,0.3), rgba(59,130,246,0.12));
-    }
-
-    .skill-chip,
-    .social-chip,
-    .project-badge {
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
-    }
-
-    .skill-chip:hover,
-    .social-chip:hover,
-    .project-card:hover,
-    .experience-card:hover,
-    .education-card:hover,
-    .org-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .hero-image,
-    .about-image,
-    .project-image,
-    .experience-image {
-      transition: transform 0.45s ease, filter 0.45s ease;
-    }
-
-    .hero-photo-wrap:hover .hero-image,
-    .about-image:hover,
-    .project-card:hover .project-image,
-    .experience-card:hover .experience-image {
-      transform: scale(1.03);
-      filter: saturate(1.05);
-    }
-
-    .menu-open {
-      max-height: 500px;
-      opacity: 1;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .menu-closed {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-    .theme-toggle-icon {
-      transition: transform 0.3s ease;
-    }
-
-    .theme-toggle:hover .theme-toggle-icon {
-      transform: rotate(15deg) scale(1.08);
-    }
-
-    @media (max-width: 1023px) {
-      .hero-outline {
-        font-size: clamp(3.4rem, 24vw, 7rem);
-        text-align: center;
-      }
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: .7s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    .nav-link.active { color: #2563eb; }
+    .card-hover { transition: .3s ease; }
+    .card-hover:hover { transform: translateY(-6px); }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-brand-200 selection:text-brand-900">
-  <!-- =========================
-    NAVBAR
-    - Sticky / fixed top
-    - Mobile hamburger
-    - Active link state on scroll
-  ========================== -->
-  <header class="fixed inset-x-0 top-0 z-50">
-    <nav class="mx-auto mt-3 w-[94%] max-w-7xl rounded-2xl glass shadow-soft">
-      <div class="flex items-center justify-between px-4 py-3 sm:px-6">
-        <a href="#home" class="flex items-center gap-3">
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 via-fuchsia-400 to-pink-400 text-sm font-bold text-white shadow-glow">PF</span>
-          <div>
-            <p class="text-sm font-semibold tracking-wide text-slate-800 dark:text-slate-100">Putri Fathonah</p>
-            <p class="text-xs text-slate-500 dark:text-slate-300">Portfolio</p>
-          </div>
-        </a>
+<body class="bg-white font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-200">
 
-        <div class="hidden items-center gap-8 lg:flex">
-          <a href="#home" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">Home</a>
-          <a href="#about" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">About</a>
-          <a href="#education" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">Education</a>
-          <a href="#organization" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">Organization</a>
-          <a href="#experience" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">Experience</a>
-          <a href="#projects" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">Projects</a>
-          <a href="#skills" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">Skills</a>
-          <a href="#contact" class="nav-link relative text-sm font-medium text-slate-700 transition hover:text-brand-600 dark:text-slate-200">Contact</a>
-        </div>
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <a href="#home" class="text-xl font-extrabold text-slate-900 dark:text-white">Putri<span class="text-primary">.</span></a>
 
-        <div class="flex items-center gap-2">
-          <button id="themeToggle" class="theme-toggle inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/40 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100" aria-label="Toggle theme">
-            <svg class="theme-toggle-icon h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"></path>
-            </svg>
-          </button>
+      <nav class="hidden gap-6 md:flex">
+        <a href="#home" class="nav-link text-sm font-semibold hover:text-primary">Home</a>
+        <a href="#about" class="nav-link text-sm font-semibold hover:text-primary">About</a>
+        <a href="#education" class="nav-link text-sm font-semibold hover:text-primary">Education</a>
+        <a href="#organization" class="nav-link text-sm font-semibold hover:text-primary">Organization</a>
+        <a href="#experience" class="nav-link text-sm font-semibold hover:text-primary">Experience</a>
+        <a href="#projects" class="nav-link text-sm font-semibold hover:text-primary">Projects</a>
+        <a href="#skills" class="nav-link text-sm font-semibold hover:text-primary">Skills</a>
+        <a href="#contact" class="nav-link text-sm font-semibold hover:text-primary">Contact</a>
+      </nav>
 
-          <button id="menuButton" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/40 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100 lg:hidden" aria-label="Toggle menu" aria-expanded="false">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"></path>
-            </svg>
-          </button>
-        </div>
+      <div class="flex items-center gap-2">
+        <button id="themeBtn" class="rounded-full border border-slate-200 p-2.5 hover:border-primary hover:text-primary dark:border-slate-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3c0 .34.02.67.06 1A7 7 0 0020 13.73c.33.03.66.06 1 .06z" />
+          </svg>
+        </button>
+        <button id="menuBtn" class="rounded-full border border-slate-200 p-2.5 md:hidden dark:border-slate-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
+    </div>
 
-      <div id="mobileMenu" class="menu-closed transition-all duration-300 lg:hidden">
-        <div class="flex flex-col gap-4 px-4 sm:px-6">
-          <a href="#home" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">Home</a>
-          <a href="#about" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">About Me</a>
-          <a href="#education" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">Education</a>
-          <a href="#organization" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">Organization</a>
-          <a href="#experience" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">Experience</a>
-          <a href="#projects" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">Projects</a>
-          <a href="#skills" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">Skills</a>
-          <a href="#contact" class="mobile-link text-sm font-medium text-slate-700 dark:text-slate-200">Contact</a>
-        </div>
+    <div id="mobileMenu" class="hidden border-t border-slate-200 px-4 pb-4 md:hidden dark:border-slate-800">
+      <div class="grid gap-2 pt-4">
+        <a href="#home" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">Home</a>
+        <a href="#about" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">About</a>
+        <a href="#education" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">Education</a>
+        <a href="#organization" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">Organization</a>
+        <a href="#experience" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">Experience</a>
+        <a href="#projects" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">Projects</a>
+        <a href="#skills" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">Skills</a>
+        <a href="#contact" class="mobile-link rounded-xl px-3 py-2 text-sm font-semibold hover:bg-soft dark:hover:bg-slate-900">Contact</a>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- =========================
-      HOME / HERO SECTION
-      Inspirasi layout mengikuti visual referensi yang kamu kirim.
-      NOTE:
-      Ganti file gambar sesuai nama file di folder images kamu.
-      Contoh yang dipakai di bawah: images/cover-home.png
-    ========================== -->
-    <section id="home" class="relative flex min-h-screen items-center overflow-hidden px-4 pb-16 pt-32 sm:px-6 lg:px-8">
-      <div class="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-        <div class="relative z-10 order-2 lg:order-1">
-          <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200/70 bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 shadow-sm dark:border-brand-300/10 dark:bg-slate-900/70 dark:text-brand-200">
-            <span class="inline-block h-2 w-2 rounded-full bg-pink-400"></span>
-            Mahasiswi Sistem Informasi
+  <main class="pt-24">
+    <!-- Home -->
+    <section id="home" class="mx-auto grid min-h-screen max-w-6xl items-center gap-10 px-4 py-16 lg:grid-cols-2">
+      <div class="reveal space-y-6">
+        <span class="inline-block rounded-full bg-soft px-4 py-2 text-sm font-semibold text-primary dark:bg-slate-900">Portfolio</span>
+        <div>
+          <h1 class="text-4xl font-extrabold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">Putri Fathonah</h1>
+          <p class="mt-3 text-lg font-semibold text-primary">Mahasiswi Sistem Informasi | Tech Enthusiast | AI Learner</p>
+        </div>
+        <p class="max-w-xl leading-8 text-slate-600 dark:text-slate-300">Saya adalah mahasiswi Sistem Informasi yang memiliki minat besar pada bidang teknologi, pengembangan sistem, dan artificial intelligence. Saya senang mengeksplorasi ide, membangun solusi digital, serta terus mengembangkan diri melalui pengalaman organisasi, proyek, dan kolaborasi.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-full bg-primary px-6 py-3 font-semibold text-white hover:bg-blue-700">Lihat Proyek</a>
+          <a href="#contact" class="rounded-full border border-slate-300 px-6 py-3 font-semibold hover:border-primary hover:text-primary dark:border-slate-700">Hubungi Saya</a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <!-- GANTI FOTO TEMPLATE INI DENGAN FOTO KAMU -->
+          <!-- Ubah src jika nama file berbeda, misalnya: images/cover-home.png -->
+          <img src="images/cover-image.png" alt="Foto utama Putri Fathonah" class="h-[420px] w-full rounded-[20px] object-cover sm:h-[520px]">
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mx-auto max-w-6xl px-4 py-20">
+      <div class="mb-10 reveal">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-primary">About Me</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Tentang Saya</h2>
+      </div>
+
+      <div class="grid items-center gap-8 lg:grid-cols-2">
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-7 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <p class="leading-8 text-slate-600 dark:text-slate-300">Halo! Saya Putri Fathonah, mahasiswi Sistem Informasi di Universitas Multi Data Palembang angkatan 2023 yang memiliki minat besar pada bidang teknologi dan artificial intelligence. Saya bercita-cita menjadi seorang Software Architect dan senang menggabungkan bisnis, teknologi, dan AI dalam berbagai proyek yang saya kerjakan. Bagi saya, teknologi bukan hanya tentang inovasi, tetapi juga tentang menciptakan solusi yang bermanfaat, relevan, dan berdampak positif bagi masyarakat.</p>
+        </div>
+
+        <div class="grid gap-4 reveal sm:grid-cols-2 lg:grid-cols-1">
+          <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <!-- GANTI DENGAN FOTO ABOUT 1 -->
+            <img src="images/cover-image.png" alt="Foto Putri 1" class="h-64 w-full rounded-2xl object-cover">
           </div>
+          <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <!-- GANTI DENGAN FOTO ABOUT 2 -->
+            <img src="images/about-2.jpg" alt="Foto Putri 2" class="h-64 w-full rounded-2xl object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <p class="mb-3 text-sm tracking-[0.35em] text-slate-500 dark:text-slate-300">PORTFOLIO</p>
-          <h1 class="section-title mb-4 text-4xl font-bold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-            Putri Fathonah
-          </h1>
-          <p class="mb-5 text-lg font-semibold gradient-text sm:text-xl lg:text-2xl">
-            Mahasiswi Sistem Informasi | Tech Enthusiast | AI Learner
-          </p>
-          <p class="max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
-            Saya adalah mahasiswi Sistem Informasi yang memiliki minat besar pada bidang teknologi, pengembangan sistem, dan artificial intelligence. Saya senang mengeksplorasi ide, membangun solusi digital, serta terus mengembangkan diri melalui pengalaman organisasi, proyek, dan kolaborasi.
-          </p>
+    <!-- Education -->
+    <section id="education" class="mx-auto max-w-6xl px-4 py-20">
+      <div class="mb-10 reveal">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-primary">Education</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Pendidikan</h2>
+      </div>
 
-          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a href="#projects" class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-brand-600 via-fuchsia-500 to-pink-500 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-              Lihat Proyek
-            </a>
-            <a href="#contact" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand-300 hover:text-brand-600 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:border-brand-400/40 dark:hover:text-brand-200">
-              Hubungi Saya
-            </a>
+      <div class="reveal rounded-3xl border border-slate-200 bg-white p-7 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Universitas Multi Data Palembang</h3>
+            <p class="mt-2 font-semibold text-primary">S1 Sistem Informasi</p>
+            <p class="mt-1 text-sm text-slate-500">Angkatan 2023 – Sekarang</p>
+          </div>
+          <span class="rounded-full bg-soft px-4 py-2 text-sm font-semibold text-primary dark:bg-slate-800">IPK: [isi IPK nanti]</span>
+        </div>
+        <p class="mt-6 leading-8 text-slate-600 dark:text-slate-300">Selama menempuh pendidikan, saya mempelajari berbagai bidang seperti analisis sistem, pengembangan perangkat lunak, basis data, manajemen proyek teknologi informasi, serta penerapan teknologi untuk mendukung kebutuhan bisnis dan masyarakat.</p>
+      </div>
+    </section>
+
+    <!-- Organization -->
+    <section id="organization" class="mx-auto max-w-6xl px-4 py-20">
+      <div class="mb-10 reveal">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-primary">Organization</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Pengalaman Organisasi</h2>
+      </div>
+
+      <div class="space-y-6 border-l-2 border-blue-100 pl-6 dark:border-slate-800">
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Himpunan Mahasiswa Sistem Informasi</h3>
+          <p class="mt-1 font-semibold text-primary">Sekretaris Umum</p>
+          <p class="mt-1 text-sm text-slate-500">2025 – 2026</p>
+          <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Bertanggung jawab dalam mengelola administrasi organisasi, termasuk surat masuk dan surat keluar dengan total lebih dari 150 dokumen. Selain itu, saya juga menyusun notulen rapat, mendokumentasikan arsip organisasi, membantu koordinasi antar divisi, serta memastikan alur komunikasi internal berjalan dengan tertib, efektif, dan terstruktur.</p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Senat Mahasiswa</h3>
+          <p class="mt-1 font-semibold text-primary">Kepala Departemen Seni dan Ormawa</p>
+          <p class="mt-1 text-sm text-slate-500">2025 – 2026</p>
+          <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Berperan dalam mendukung perkembangan unit kegiatan mahasiswa dan menjadi penghubung antara organisasi mahasiswa dengan pihak terkait. Saya terlibat dalam koordinasi program kerja, pengembangan kegiatan seni dan organisasi kemahasiswaan, serta mendorong kolaborasi agar kegiatan mahasiswa berjalan lebih aktif, kreatif, dan terarah.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="mx-auto max-w-6xl px-4 py-20">
+      <div class="mb-10 reveal">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-primary">Experience</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Pengalaman</h2>
+      </div>
+
+      <div class="space-y-8">
+        <div class="reveal grid gap-6 lg:grid-cols-2">
+          <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <!-- GANTI DENGAN FOTO EXPERIENCE 1 -->
+            <img src="images/experience-1.jpg" alt="PKKMB 2025" class="h-72 w-full rounded-2xl object-cover">
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Master of Ceremony — PKKMB 2025</h3>
+            <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Menjadi pembawa acara dalam kegiatan PKKMB 2025 dengan membawakan rangkaian acara secara komunikatif, interaktif, dan terstruktur. Pengalaman ini membantu saya meningkatkan kemampuan public speaking, kepercayaan diri, serta kemampuan membangun suasana yang positif di hadapan audiens.</p>
           </div>
         </div>
 
-        <div class="relative order-1 flex min-h-[420px] items-center justify-center lg:order-2 lg:min-h-[680px]">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="hero-outline font-extrabold">PORTFOLIO</span>
+        <div class="reveal grid gap-6 lg:grid-cols-2">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900 lg:order-1">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Sekretaris Umum dan Mentor — LKMM UMDP 2025</h3>
+            <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Berperan sebagai sekretaris umum sekaligus mentor dalam kegiatan LKMM UMDP 2025. Saya bertanggung jawab dalam pengelolaan administrasi kegiatan, penyusunan dokumen, serta mendampingi peserta selama pelaksanaan program. Pengalaman ini memperkuat kemampuan saya dalam manajemen, komunikasi, kepemimpinan, dan pendampingan tim.</p>
           </div>
-
-          <div class="absolute left-2 top-4 z-20 hidden text-sm tracking-[0.22em] text-slate-600 dark:text-slate-300 sm:block lg:left-0 lg:top-10">
-            Putri Fathonah
+          <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-soft dark:border-slate-800 dark:bg-slate-900 lg:order-2">
+            <!-- GANTI DENGAN FOTO EXPERIENCE 2 -->
+            <img src="images/experience-2.jpg" alt="LKMM UMDP 2025" class="h-72 w-full rounded-2xl object-cover">
           </div>
-          <div class="absolute right-2 top-4 z-20 hidden text-sm tracking-[0.22em] text-slate-600 dark:text-slate-300 sm:block lg:right-0 lg:top-10">
-            @puonaav
+        </div>
+
+        <div class="reveal grid gap-6 lg:grid-cols-2">
+          <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <!-- GANTI DENGAN FOTO EXPERIENCE 3 -->
+            <img src="images/experience-3.jpg" alt="LKMM Regional" class="h-72 w-full rounded-2xl object-cover">
           </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Peserta — LKMM Regional</h3>
+            <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Mengikuti kegiatan LKMM Regional sebagai bentuk pengembangan diri dalam bidang kepemimpinan, organisasi, dan kolaborasi. Dari kegiatan ini, saya memperoleh wawasan baru mengenai manajemen tim, pengambilan keputusan, serta pentingnya membangun relasi dan komunikasi yang efektif dalam lingkungan organisasi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="hero-photo-wrap relative z-10 animate-fadeIn">
-            <div class="relative mx-auto w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[460px]">
-              <!--
-                FOTO HERO
-                Ganti src di bawah dengan nama file foto utama kamu di folder images.
-                Contoh:
-                - images/cover-home.png
-                - images/cover-home.webp
-                - images/cover-home.jpg
-              -->
-              <img
-                src="images/cover-image.png"
-                alt="Foto utama Putri Fathonah"
-                class="hero-image relative z-10 mx-auto max-h-[70vh] w-full object-contain drop-shadow-[0_30px_60px_rgba(15,23,42,0.22)] animate-floatSoft"
-              />
+    <!-- Projects -->
+    <section id="projects" class="mx-auto max-w-6xl px-4 py-20">
+      <div class="mb-10 reveal">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-primary">Projects</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Proyek</h2>
+      </div>
 
-              <!-- dekorasi kecil supaya terasa seperti poster modern -->
-              <span class="absolute left-2 top-24 z-20 h-14 w-10 rotate-12 rounded-md bg-yellow-100/90 shadow-soft backdrop-blur"></span>
-              <span class="absolute right-6 top-20 z-20 h-8 w-12 -rotate-12 rounded-md bg-sky-400/80 shadow-soft"></span>
-              <span class="absolute left-0 bottom-32 z-20 h-12 w-14 -rotate-6 rounded-md bg-lime-300/80 shadow-soft"></span>
-              <span class="absolute right-0 bottom-16 z-20 h-11 w-12 rotate-6 rounded-md bg-violet-300/80 shadow-soft"></span>
-              <span class="absolute left-10 bottom-44 z-20 h-10 w-12 rotate-3 rounded-md bg-pink-200/90 shadow-soft"></span>
-              <span class="absolute right-14 bottom-40 z-20 h-14 w-12 rotate-3 rounded-md bg-pink-200/90 shadow-soft"></span>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="reveal card-hover rounded-3xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <div class="overflow-hidden rounded-t-3xl bg-slate-50 p-3 dark:bg-slate-900">
+            <!-- GANTI DENGAN SCREENSHOT PROJECT 1 -->
+            <img src="images/project-1.jpg" alt="Project 1" class="h-60 w-full rounded-2xl object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Pengembangan Aplikasi Website pada Instansi BUMN</h3>
+            <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Dalam kegiatan magang di salah satu instansi BUMN, saya terlibat dalam pengembangan aplikasi berbasis website untuk mendukung kebutuhan sistem informasi. Pada proyek ini, saya berkontribusi dalam proses perancangan fitur, pengembangan antarmuka, serta implementasi sistem menggunakan Laravel dan teknologi web lainnya. Pengalaman ini membantu saya memahami alur pengembangan aplikasi secara nyata, mulai dari analisis kebutuhan hingga implementasi sistem.</p>
+            <div class="mt-4 flex flex-wrap gap-2 text-sm font-semibold">
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">Laravel</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">PHP</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">MySQL</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">HTML</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">CSS</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal card-hover rounded-3xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <div class="overflow-hidden rounded-t-3xl bg-slate-50 p-3 dark:bg-slate-900">
+            <!-- GANTI DENGAN SCREENSHOT PROJECT 2 -->
+            <img src="images/project-2.jpg" alt="Project 2" class="h-60 w-full rounded-2xl object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Website Pengelolaan Penginapan Kost</h3>
+            <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Saya mengembangkan website pengelolaan kost yang dirancang untuk mempermudah proses pendataan kamar, penghuni, serta pengelolaan informasi penginapan secara lebih terstruktur. Proyek ini dibuat untuk menghadirkan sistem yang fungsional, efisien, dan mudah digunakan, dengan memanfaatkan teknologi web sesuai kebutuhan pengguna. Melalui proyek ini, saya belajar membangun solusi digital yang tidak hanya berjalan dengan baik, tetapi juga memberikan kemudahan dalam pengelolaan data.</p>
+            <div class="mt-4 flex flex-wrap gap-2 text-sm font-semibold">
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">PHP</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">MySQL</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">HTML</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">CSS</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">JavaScript</span>
+              <span class="rounded-full bg-soft px-3 py-1 text-primary dark:bg-slate-800">Web Development</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT ME -->
-    <section id="about" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
-        <div class="reveal">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">About Me</p>
-          <h2 class="section-title mb-6 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Mengenal Saya Lebih Dekat</h2>
-          <div class="rounded-3xl border border-white/50 bg-white/70 p-8 shadow-soft dark:border-white/10 dark:bg-slate-900/60">
-            <p class="text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
-              Halo! Saya Putri Fathonah, mahasiswi Sistem Informasi di Universitas Multi Data Palembang angkatan 2023 yang memiliki minat besar pada bidang teknologi dan artificial intelligence. Saya bercita-cita menjadi seorang Software Architect dan senang menggabungkan bisnis, teknologi, dan AI dalam berbagai proyek yang saya kerjakan. Bagi saya, teknologi bukan hanya tentang inovasi, tetapi juga tentang menciptakan solusi yang bermanfaat, relevan, dan berdampak positif bagi masyarakat.
-            </p>
+    <!-- Skills -->
+    <section id="skills" class="mx-auto max-w-6xl px-4 py-20">
+      <div class="mb-10 reveal">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-primary">Skills</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Keahlian</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Soft Skills</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Public Speaking</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Communication</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Problem Solving</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Teamwork</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Leadership</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Time Management</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Adaptability</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Critical Thinking</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Networking</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Collaboration</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Responsibility</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Creativity</span>
           </div>
         </div>
 
-        <div class="reveal grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-          <!-- FOTO ABOUT 1: ganti file sesuai foto kamu -->
-          <img src="images/about-1.jpg" alt="Foto Putri Fathonah 1" class="about-image h-72 w-full rounded-[2rem] object-cover shadow-soft sm:h-80 lg:h-80" />
-
-          <!-- FOTO ABOUT 2: ganti file sesuai foto kamu -->
-          <img src="images/about-2.jpg" alt="Foto Putri Fathonah 2" class="about-image h-72 w-full rounded-[2rem] object-cover shadow-soft sm:h-80 lg:h-80" />
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Hard Skills</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">HTML</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">CSS</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">JavaScript</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">PHP</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Laravel</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">MySQL</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Web Development</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Microsoft Office</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Google Workspace</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Canva</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Figma</span>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal mb-10 max-w-3xl">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">Education</p>
-          <h2 class="section-title text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Perjalanan Akademik</h2>
-        </div>
-
-        <div class="education-card reveal relative overflow-hidden rounded-[2rem] border border-white/50 bg-white/75 p-8 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65 lg:p-10">
-          <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-200/30 blur-3xl"></div>
-          <div class="grid gap-8 lg:grid-cols-[0.65fr_1fr]">
-            <div class="flex flex-col justify-between rounded-[1.75rem] bg-gradient-to-br from-brand-50 via-pink-50 to-blue-50 p-6 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900">
-              <div>
-                <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-sm dark:bg-slate-700">
-                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <path d="M22 10 12 5 2 10l10 5 10-5Z"></path>
-                    <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"></path>
-                  </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Universitas Multi Data Palembang</h3>
-                <p class="mt-2 text-base font-medium text-slate-600 dark:text-slate-300">S1 Sistem Informasi</p>
-              </div>
-
-              <div class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                <p><span class="font-semibold text-slate-800 dark:text-white">Periode:</span> Angkatan 2023 – Sekarang</p>
-                <p><span class="font-semibold text-slate-800 dark:text-white">IPK:</span> [isi IPK nanti]</p>
-              </div>
-            </div>
-
-            <div class="flex items-center">
-              <p class="text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
-                Selama menempuh pendidikan, saya mempelajari berbagai bidang seperti analisis sistem, pengembangan perangkat lunak, basis data, manajemen proyek teknologi informasi, serta penerapan teknologi untuk mendukung kebutuhan bisnis dan masyarakat.
-              </p>
-            </div>
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">AI Tools</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Gemini</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">NotebookLM</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">Antigravity</span>
+            <span class="rounded-full bg-soft px-3 py-2 text-sm font-semibold text-primary dark:bg-slate-800">ChatGPT</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ORGANIZATION -->
-    <section id="organization" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal mb-12 max-w-3xl">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">Organization</p>
-          <h2 class="section-title text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Pengalaman Organisasi</h2>
-        </div>
+    <!-- Contact -->
+    <section id="contact" class="mx-auto max-w-6xl px-4 py-20">
+      <div class="reveal rounded-3xl border border-slate-200 bg-white p-8 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-primary">Contact</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Mari Terhubung</h2>
+        <p class="mt-4 max-w-2xl leading-8 text-slate-600 dark:text-slate-300">Saya terbuka untuk peluang kolaborasi, pengembangan proyek, maupun diskusi seputar teknologi, organisasi, dan artificial intelligence.</p>
 
-        <div class="relative pl-10 sm:pl-14">
-          <div class="timeline-line"></div>
-
-          <div class="org-card reveal relative mb-8 rounded-[2rem] border border-white/50 bg-white/75 p-7 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65">
-            <span class="absolute -left-[36px] top-8 inline-flex h-7 w-7 items-center justify-center rounded-full border-4 border-white bg-brand-500 shadow-md dark:border-slate-900"></span>
-            <div class="mb-4 flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">2025 – 2026</span>
-              <span class="rounded-full bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700 dark:bg-pink-500/10 dark:text-pink-200">Sekretaris Umum</span>
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Himpunan Mahasiswa Sistem Informasi</h3>
-            <p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
-              Bertanggung jawab dalam mengelola administrasi organisasi, termasuk surat masuk dan surat keluar dengan total lebih dari 150 dokumen. Selain itu, saya juga menyusun notulen rapat, mendokumentasikan arsip organisasi, membantu koordinasi antar divisi, serta memastikan alur komunikasi internal berjalan dengan tertib, efektif, dan terstruktur.
-            </p>
-          </div>
-
-          <div class="org-card reveal relative rounded-[2rem] border border-white/50 bg-white/75 p-7 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65">
-            <span class="absolute -left-[36px] top-8 inline-flex h-7 w-7 items-center justify-center rounded-full border-4 border-white bg-pink-500 shadow-md dark:border-slate-900"></span>
-            <div class="mb-4 flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">2025 – 2026</span>
-              <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700 dark:bg-sky-500/10 dark:text-sky-200">Kepala Departemen Seni dan Ormawa</span>
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Senat Mahasiswa</h3>
-            <p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
-              Berperan dalam mendukung perkembangan unit kegiatan mahasiswa dan menjadi penghubung antara organisasi mahasiswa dengan pihak terkait. Saya terlibat dalam koordinasi program kerja, pengembangan kegiatan seni dan organisasi kemahasiswaan, serta mendorong kolaborasi agar kegiatan mahasiswa berjalan lebih aktif, kreatif, dan terarah.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal mb-12 max-w-3xl">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">Experience</p>
-          <h2 class="section-title text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Pengalaman yang Membentuk Saya</h2>
-        </div>
-
-        <div class="space-y-8">
-          <article class="experience-card reveal overflow-hidden rounded-[2rem] border border-white/50 bg-white/75 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65">
-            <div class="grid items-center lg:grid-cols-2">
-              <div class="overflow-hidden">
-                <!-- FOTO EXPERIENCE 1 -->
-                <img src="images/experience-1.jpg" alt="Master of Ceremony — PKKMB 2025" class="experience-image h-full min-h-[280px] w-full object-cover lg:min-h-[360px]" />
-              </div>
-              <div class="p-7 lg:p-10">
-                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-brand-600">Experience 01</p>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Master of Ceremony — PKKMB 2025</h3>
-                <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
-                  Menjadi pembawa acara dalam kegiatan PKKMB 2025 dengan membawakan rangkaian acara secara komunikatif, interaktif, dan terstruktur. Pengalaman ini membantu saya meningkatkan kemampuan public speaking, kepercayaan diri, serta kemampuan membangun suasana yang positif di hadapan audiens.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article class="experience-card reveal overflow-hidden rounded-[2rem] border border-white/50 bg-white/75 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65">
-            <div class="grid items-center lg:grid-cols-2">
-              <div class="order-2 p-7 lg:order-1 lg:p-10">
-                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-brand-600">Experience 02</p>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Sekretaris Umum dan Mentor — LKMM UMDP 2025</h3>
-                <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
-                  Berperan sebagai sekretaris umum sekaligus mentor dalam kegiatan LKMM UMDP 2025. Saya bertanggung jawab dalam pengelolaan administrasi kegiatan, penyusunan dokumen, serta mendampingi peserta selama pelaksanaan program. Pengalaman ini memperkuat kemampuan saya dalam manajemen, komunikasi, kepemimpinan, dan pendampingan tim.
-                </p>
-              </div>
-              <div class="order-1 overflow-hidden lg:order-2">
-                <!-- FOTO EXPERIENCE 2 -->
-                <img src="images/experience-2.jpg" alt="Sekretaris Umum dan Mentor — LKMM UMDP 2025" class="experience-image h-full min-h-[280px] w-full object-cover lg:min-h-[360px]" />
-              </div>
-            </div>
-          </article>
-
-          <article class="experience-card reveal overflow-hidden rounded-[2rem] border border-white/50 bg-white/75 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65">
-            <div class="grid items-center lg:grid-cols-2">
-              <div class="overflow-hidden">
-                <!-- FOTO EXPERIENCE 3 -->
-                <img src="images/experience-3.jpg" alt="Peserta — LKMM Regional" class="experience-image h-full min-h-[280px] w-full object-cover lg:min-h-[360px]" />
-              </div>
-              <div class="p-7 lg:p-10">
-                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-brand-600">Experience 03</p>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Peserta — LKMM Regional</h3>
-                <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
-                  Mengikuti kegiatan LKMM Regional sebagai bentuk pengembangan diri dalam bidang kepemimpinan, organisasi, dan kolaborasi. Dari kegiatan ini, saya memperoleh wawasan baru mengenai manajemen tim, pengambilan keputusan, serta pentingnya membangun relasi dan komunikasi yang efektif dalam lingkungan organisasi.
-                </p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal mb-12 max-w-3xl">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">Projects</p>
-          <h2 class="section-title text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Project yang Pernah Saya Kerjakan</h2>
-        </div>
-
-        <div class="grid gap-8 xl:grid-cols-2">
-          <article class="project-card reveal overflow-hidden rounded-[2rem] border border-white/50 bg-white/75 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65">
-            <div class="overflow-hidden">
-              <!-- SCREENSHOT PROJECT 1 -->
-              <img src="images/project-1.jpg" alt="Pengembangan Aplikasi Website pada Instansi BUMN" class="project-image h-64 w-full object-cover sm:h-72" />
-            </div>
-            <div class="p-7">
-              <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Pengembangan Aplikasi Website pada Instansi BUMN</h3>
-              <p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
-                Dalam kegiatan magang di salah satu instansi BUMN, saya terlibat dalam pengembangan aplikasi berbasis website untuk mendukung kebutuhan sistem informasi. Pada proyek ini, saya berkontribusi dalam proses perancangan fitur, pengembangan antarmuka, serta implementasi sistem menggunakan Laravel dan teknologi web lainnya. Pengalaman ini membantu saya memahami alur pengembangan aplikasi secara nyata, mulai dari analisis kebutuhan hingga implementasi sistem.
-              </p>
-              <div class="mt-6 flex flex-wrap gap-3">
-                <span class="project-badge rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Laravel</span>
-                <span class="project-badge rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">PHP</span>
-                <span class="project-badge rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">MySQL</span>
-                <span class="project-badge rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">HTML</span>
-                <span class="project-badge rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">CSS</span>
-                <span class="project-badge rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">JavaScript</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal overflow-hidden rounded-[2rem] border border-white/50 bg-white/75 shadow-soft transition duration-300 dark:border-white/10 dark:bg-slate-900/65">
-            <div class="overflow-hidden">
-              <!-- SCREENSHOT PROJECT 2 -->
-              <img src="images/project-2.jpg" alt="Website Pengelolaan Penginapan Kost" class="project-image h-64 w-full object-cover sm:h-72" />
-            </div>
-            <div class="p-7">
-              <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Website Pengelolaan Penginapan Kost</h3>
-              <p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
-                Saya mengembangkan website pengelolaan kost yang dirancang untuk mempermudah proses pendataan kamar, penghuni, serta pengelolaan informasi penginapan secara lebih terstruktur. Proyek ini dibuat untuk menghadirkan sistem yang fungsional, efisien, dan mudah digunakan, dengan memanfaatkan teknologi web sesuai kebutuhan pengguna. Melalui proyek ini, saya belajar membangun solusi digital yang tidak hanya berjalan dengan baik, tetapi juga memberikan kemudahan dalam pengelolaan data.
-              </p>
-              <div class="mt-6 flex flex-wrap gap-3">
-                <span class="project-badge rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-semibold text-pink-700 dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">Laravel</span>
-                <span class="project-badge rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-semibold text-pink-700 dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">PHP</span>
-                <span class="project-badge rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-semibold text-pink-700 dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">MySQL</span>
-                <span class="project-badge rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-semibold text-pink-700 dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">HTML</span>
-                <span class="project-badge rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-semibold text-pink-700 dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">CSS</span>
-                <span class="project-badge rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-semibold text-pink-700 dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">JavaScript</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal mb-12 max-w-3xl">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">Skills</p>
-          <h2 class="section-title text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Kemampuan yang Saya Kembangkan</h2>
-        </div>
-
-        <div class="grid gap-8 lg:grid-cols-3">
-          <div class="reveal rounded-[2rem] border border-white/50 bg-white/75 p-7 shadow-soft dark:border-white/10 dark:bg-slate-900/65">
-            <h3 class="mb-5 text-xl font-bold text-slate-900 dark:text-white">Soft Skills</h3>
-            <div class="flex flex-wrap gap-3">
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Public Speaking</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Communication</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Problem Solving</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Teamwork</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Leadership</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Time Management</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Adaptability</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Critical Thinking</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Networking</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Collaboration</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Responsibility</span>
-              <span class="skill-chip rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-brand-500/10 dark:text-brand-200">Creativity</span>
-            </div>
-          </div>
-
-          <div class="reveal rounded-[2rem] border border-white/50 bg-white/75 p-7 shadow-soft dark:border-white/10 dark:bg-slate-900/65">
-            <h3 class="mb-5 text-xl font-bold text-slate-900 dark:text-white">Hard Skills</h3>
-            <div class="flex flex-wrap gap-3">
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">HTML</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">CSS</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">JavaScript</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">PHP</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">Laravel</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">MySQL</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">Web Development</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">Microsoft Office</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">Google Workspace</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">Canva</span>
-              <span class="skill-chip rounded-full border border-pink-200 bg-pink-50 px-4 py-2 text-sm font-medium text-pink-700 shadow-sm dark:border-pink-400/20 dark:bg-pink-500/10 dark:text-pink-200">Figma</span>
-            </div>
-          </div>
-
-          <div class="reveal rounded-[2rem] border border-white/50 bg-white/75 p-7 shadow-soft dark:border-white/10 dark:bg-slate-900/65">
-            <h3 class="mb-5 text-xl font-bold text-slate-900 dark:text-white">AI Tools</h3>
-            <div class="flex flex-wrap gap-3">
-              <span class="skill-chip rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 shadow-sm dark:border-sky-400/20 dark:bg-sky-500/10 dark:text-sky-200">Gemini</span>
-              <span class="skill-chip rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 shadow-sm dark:border-sky-400/20 dark:bg-sky-500/10 dark:text-sky-200">NotebookLM</span>
-              <span class="skill-chip rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 shadow-sm dark:border-sky-400/20 dark:bg-sky-500/10 dark:text-sky-200">Antigravity</span>
-              <span class="skill-chip rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 shadow-sm dark:border-sky-400/20 dark:bg-sky-500/10 dark:text-sky-200">ChatGPT</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal overflow-hidden rounded-[2rem] border border-white/50 bg-white/75 p-8 shadow-soft dark:border-white/10 dark:bg-slate-900/65 sm:p-10 lg:p-12">
-          <div class="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
-            <div>
-              <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">Contact</p>
-              <h2 class="section-title text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Mari Terhubung</h2>
-              <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
-                Saya terbuka untuk peluang kolaborasi, pengembangan proyek, maupun diskusi seputar teknologi, organisasi, dan artificial intelligence.
-              </p>
-            </div>
-
-            <div class="grid gap-4 sm:grid-cols-2">
-              <!-- Ganti link / username / email sesuai data final kamu -->
-              <a href="#" class="social-chip rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm transition duration-300 hover:border-brand-300 hover:shadow-soft dark:border-white/10 dark:bg-slate-950/50">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">GitHub</p>
-                <p class="mt-2 text-base font-semibold text-slate-900 dark:text-white">[isi username GitHub]</p>
-              </a>
-
-              <a href="#" class="social-chip rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm transition duration-300 hover:border-brand-300 hover:shadow-soft dark:border-white/10 dark:bg-slate-950/50">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">LinkedIn</p>
-                <p class="mt-2 text-base font-semibold text-slate-900 dark:text-white">[isi link LinkedIn]</p>
-              </a>
-
-              <a href="mailto:[isi email]" class="social-chip rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm transition duration-300 hover:border-brand-300 hover:shadow-soft dark:border-white/10 dark:bg-slate-950/50">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Email</p>
-                <p class="mt-2 text-base font-semibold text-slate-900 dark:text-white">[isi email]</p>
-              </a>
-
-              <a href="#" class="social-chip rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm transition duration-300 hover:border-brand-300 hover:shadow-soft dark:border-white/10 dark:bg-slate-950/50">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Instagram</p>
-                <p class="mt-2 text-base font-semibold text-slate-900 dark:text-white">[isi username Instagram]</p>
-              </a>
-            </div>
-          </div>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <!-- GANTI DATA KONTAK DI BAWAH SESUAI PUNYA KAMU -->
+          <a href="#" class="rounded-2xl border border-slate-200 p-4 hover:border-primary dark:border-slate-800">
+            <p class="text-sm text-slate-500">GitHub</p>
+            <p class="mt-1 font-semibold text-slate-900 dark:text-white">[isi username GitHub]</p>
+          </a>
+          <a href="#" class="rounded-2xl border border-slate-200 p-4 hover:border-primary dark:border-slate-800">
+            <p class="text-sm text-slate-500">LinkedIn</p>
+            <p class="mt-1 font-semibold text-slate-900 dark:text-white">[isi link LinkedIn]</p>
+          </a>
+          <a href="mailto:[isi email]" class="rounded-2xl border border-slate-200 p-4 hover:border-primary dark:border-slate-800">
+            <p class="text-sm text-slate-500">Email</p>
+            <p class="mt-1 font-semibold text-slate-900 dark:text-white">[isi email]</p>
+          </a>
+          <a href="#" class="rounded-2xl border border-slate-200 p-4 hover:border-primary dark:border-slate-800">
+            <p class="text-sm text-slate-500">Instagram</p>
+            <p class="mt-1 font-semibold text-slate-900 dark:text-white">[isi username Instagram]</p>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="px-4 pb-10 pt-4 text-center text-sm text-slate-500 dark:text-slate-400 sm:px-6 lg:px-8">
+  <footer class="border-t border-slate-200 py-6 text-center text-sm text-slate-500 dark:border-slate-800">
     © 2026 Putri Fathonah. All rights reserved.
   </footer>
 
   <script>
-    // Theme Toggle (Light / Dark)
-    const root = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const storedTheme = localStorage.getItem('theme');
-
-    if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      root.classList.add('dark');
-    }
-
-    themeToggle.addEventListener('click', () => {
-      root.classList.toggle('dark');
-      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-    });
-
-    // Mobile Menu
-    const menuButton = document.getElementById('menuButton');
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    const reveals = document.querySelectorAll('.reveal');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    menuButton.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.contains('menu-open');
-      mobileMenu.classList.toggle('menu-open', !isOpen);
-      mobileMenu.classList.toggle('menu-closed', isOpen);
-      menuButton.setAttribute('aria-expanded', String(!isOpen));
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') html.classList.add('dark');
+
+    themeBtn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('menu-open');
-        mobileMenu.classList.add('menu-closed');
-        menuButton.setAttribute('aria-expanded', 'false');
-      });
-    });
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-    // Reveal On Scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('show');
       });
-    }, { threshold: 0.14 });
+    }, { threshold: 0.15 });
 
     reveals.forEach(el => observer.observe(el));
 
-    // Active Navbar Link on Scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
     function setActiveLink() {
-      let current = 'home';
+      let current = '';
       sections.forEach(section => {
-        const top = window.scrollY;
-        const offset = section.offsetTop - 140;
-        const height = section.offsetHeight;
-        if (top >= offset && top < offset + height) {
-          current = section.getAttribute('id');
-        }
+        if (scrollY >= section.offsetTop - 140) current = section.id;
       });
-
       navLinks.forEach(link => {
-        link.classList.remove('active', 'text-brand-600', 'dark:text-brand-200');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active', 'text-brand-600', 'dark:text-brand-200');
-        }
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
       });
     }
 
     window.addEventListener('scroll', setActiveLink);
-    window.addEventListener('load', setActiveLink);
-
-    // Close mobile menu on desktop resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024) {
-        mobileMenu.classList.remove('menu-open');
-        mobileMenu.classList.add('menu-closed');
-        menuButton.setAttribute('aria-expanded', 'false');
-      }
-    });
+    setActiveLink();
   </script>
 </body>
 </html>
